@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ar_demo</name>
+  <version>0.0.0</version>
+  <description>The ar_demo package</description>
+
+  <!-- Maintainer information -->
+  <maintainer email="qintonguav@gmail.com">tony-ws</maintainer>
+
+  <!-- License information -->
+  <license>Apache-2.0</license>
+
+  <!-- Dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>sensor_msgs</depend>
+  <depend>OpenCV</depend>
+  <depend>message_filters</depend>
+  <depend>camera_model</depend>
+
+  <!-- Export section -->
+  <export>
+    <!-- Additional information can be placed here -->
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>feature_tracker</name>
+  <version>0.0.1</version>
+  <description>Feature tracker package</description> 
+
+  <!-- Mantenedor -->
+  <maintainer email="qintonguav@gmail.com">dvorak</maintainer>
+
+  <!-- Licencia -->
+  <license>Apache-2.0</license>
+
+  <!-- Dependencias de construcción y ejecución -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>OpenCV</depend>
+  <depend>Eigen3</depend>
+  <depend>camera_model</depend>
+
+  <!-- Dependencias adicionales -->
+  <!-- Si "camera_model" no existe en ROS 2, revisa su disponibilidad o elimínalo -->
+  <!-- <depend>camera_model</depend> -->
+
+  <!-- Dependencias para pruebas -->
+  <!-- <test_depend>ament_lint_auto</test_depend> -->
+  <!-- <test_depend>ament_lint_common</test_depend> -->
+
+  <!-- Sección de exportación -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

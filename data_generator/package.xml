@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>data_generator</name>
+  <version>0.0.1</version>
+  <description>The data_generator package</description>
+
+  <maintainer email="dvorak@todo.todo">dvorak</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <!-- Dependencies for build and runtime -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>OpenCV</depend>
+
+  <!-- Test dependencies -->
+  <!-- <test_depend>ament_lint_auto</test_depend> -->
+  <!-- <test_depend>ament_lint_common</test_depend> -->
+
+  <export>
+    <!-- Export information for ament -->
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
