@@ -22,7 +22,7 @@
 
 #define SHOW_UNDISTORTION 0
 
-auto n = rclcpp::Node::make_shared("feature_tracker");
+std::shared_ptr<rclcpp::Node> n;
 
 vector<uchar> r_status;
 vector<float> r_err;
@@ -278,6 +278,10 @@ int main(int argc, char ** argv)
   // readParameters(n);
   // Same but in ros2
   rclcpp::init(argc, argv);
+  auto node_options = rclcpp::NodeOptions();
+  node_options.allow_undeclared_parameters(true);
+  node_options.automatically_declare_parameters_from_overrides(true);
+  n = rclcpp::Node::make_shared("feature_tracker", node_options);
   rclcpp::Logger logger = n->get_logger();
   readParameters(n);
 

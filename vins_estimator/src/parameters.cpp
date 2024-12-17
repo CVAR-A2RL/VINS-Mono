@@ -24,7 +24,7 @@ double ROW, COL;
 double TD, TR;
 
 template<typename T>
-T readParam(const std::shared_ptr<rclcpp::Node> & node, const std::string & name)
+T readParam(const rclcpp::Node::SharedPtr & node, const std::string & name)
 {
   T ans;
   if (node->get_parameter(name, ans)) {
@@ -40,7 +40,7 @@ T readParam(const std::shared_ptr<rclcpp::Node> & node, const std::string & name
 
 // void readParameters(ros::NodeHandle &n)
 // Same but in ros2
-void readParameters(std::shared_ptr<rclcpp::Node> & n)
+void readParameters(const rclcpp::Node::SharedPtr & n)
 {
   std::string config_file;
   config_file = readParam<std::string>(n, "config_file");

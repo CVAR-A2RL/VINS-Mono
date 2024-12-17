@@ -406,7 +406,11 @@ int main(int argc, char ** argv)
   // ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
   // Same but in ros2
   rclcpp::init(argc, argv);
-  auto n = rclcpp::Node::make_shared("vins_estimator");
+  auto node_options = rclcpp::NodeOptions();
+  // Allow override parameters with launch file
+  node_options.allow_undeclared_parameters(true);
+  node_options.automatically_declare_parameters_from_overrides(true);
+  auto n = rclcpp::Node::make_shared("vins_estimator", node_options);
   readParameters(n);
   estimator.setParameter();
 #ifdef EIGEN_DONT_PARALLELIZE

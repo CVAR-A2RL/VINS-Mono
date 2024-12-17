@@ -45,7 +45,7 @@ extern double ROW, COL;
 
 // void readParameters(ros::NodeHandle &n);
 // Same but in ros2
-void readParameters(std::shared_ptr < rclcpp::Node > & n);
+void readParameters(const rclcpp::Node::SharedPtr & n);
 
 enum SIZE_PARAMETERIZATION
 {

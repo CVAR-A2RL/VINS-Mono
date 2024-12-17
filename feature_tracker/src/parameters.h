@@ -28,4 +28,4 @@ extern bool PUB_THIS_FRAME;
 
 // void readParameters(ros::NodeHandle & n);
 // Same but in ros2
-void readParameters(rclcpp::Node::SharedPtr & n);
+void readParameters(const rclcpp::Node::SharedPtr & n);

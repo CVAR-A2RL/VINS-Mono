@@ -21,7 +21,7 @@ bool PUB_THIS_FRAME;
 template<typename T>
 // T readParam(ros::NodeHandle &n, std::string name)
 // Same but in ros2
-T readParam(rclcpp::Node::SharedPtr & n, std::string name)
+T readParam(const rclcpp::Node::SharedPtr & n, std::string name)
 {
   T ans;
   // if (n->getParam(name, ans)) {
@@ -43,7 +43,7 @@ T readParam(rclcpp::Node::SharedPtr & n, std::string name)
 
 // void readParameters(ros::NodeHandle &n)
 // Same but in ros2
-void readParameters(rclcpp::Node::SharedPtr & n)
+void readParameters(const rclcpp::Node::SharedPtr & n)
 {
   std::string config_file;
   config_file = readParam<std::string>(n, "config_file");

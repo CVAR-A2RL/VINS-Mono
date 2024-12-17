@@ -590,7 +590,10 @@ int main(int argc, char ** argv)
   // posegraph.registerPub(n);
   // Same but in ros2
   rclcpp::init(argc, argv);
-  auto n = rclcpp::Node::make_shared("pose_graph");
+  auto node_options = rclcpp::NodeOptions();
+  node_options.allow_undeclared_parameters(true);
+  node_options.automatically_declare_parameters_from_overrides(true);
+  auto n = rclcpp::Node::make_shared("pose_graph", node_options);
   posegraph.registerPub(n);
 
   // read param
@@ -612,6 +615,10 @@ int main(int argc, char ** argv)
   n->get_parameter("skip_dis", SKIP_DIS);
   std::string config_file;
   n->get_parameter("config_file", config_file);
+  std::string pkg_path;
+  n->get_parameter("vins_folder", pkg_path);
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "config_file: %s", config_file.c_str());
+  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "pkg_path: %s", pkg_path.c_str());
   cv::FileStorage fsSettings(config_file, cv::FileStorage::READ);
   if (!fsSettings.isOpened()) {
     std::cerr << "ERROR: Wrong path to settings" << std::endl;
@@ -630,12 +637,12 @@ int main(int argc, char ** argv)
     COL = fsSettings["image_width"];
     // std::string pkg_path = ros::package::getPath("pose_graph");
     // Same but in ros2
-    std::string pkg_path = ament_index_cpp::get_package_share_directory("pose_graph");
-    string vocabulary_file = pkg_path + "/../support_files/brief_k10L6.bin";
+    // std::string pkg_path = ament_index_cpp::get_package_share_directory("pose_graph");
+    string vocabulary_file = pkg_path + "support_files/brief_k10L6.bin";
     cout << "vocabulary_file" << vocabulary_file << endl;
     posegraph.loadVocabulary(vocabulary_file);
 
-    BRIEF_PATTERN_FILE = pkg_path + "/../support_files/brief_pattern.yml";
+    BRIEF_PATTERN_FILE = pkg_path + "support_files/brief_pattern.yml";
     cout << "BRIEF_PATTERN_FILE" << BRIEF_PATTERN_FILE << endl;
     m_camera =
       camodocal::CameraFactory::instance()->generateCameraFromYamlFile(config_file.c_str());
