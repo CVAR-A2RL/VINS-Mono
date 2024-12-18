@@ -1,0 +1,20 @@
+/**:
+  ros__parameters:
+    sub_ground_truth_pose_topic: ""
+    sub_ground_truth_point_topic: "/leica/position"
+    pub__ground_truth_pose_topic: "/ground_truth/pose"
+    pub_ground_truth_path_topic: "/ground_truth/path"
+    frame_id: "world"
+    starting_pose:
+      position:
+        x: 4.688319
+        y: -1.786938
+        # z: 0.783338
+        z: 0.918338
+      orientation:
+        # w: 0.203
+        w: 0.242
+        x: 0.0
+        y: 0.0
+        # z: 0.979
+        z: 0.970
