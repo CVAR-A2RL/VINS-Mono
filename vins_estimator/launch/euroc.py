@@ -2,6 +2,8 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
     # Get the share directory of the feature_tracker package
@@ -14,6 +16,12 @@ def generate_launch_description():
     # vins_path = os.path.join(feature_tracker_share, '..', 'config', '..')
     vins_path = '/root/aerostack2_ws/src/VINS-Mono/'
 
+    # Launch parameters
+    
+    config_file_param = DeclareLaunchArgument('config_file',
+                                              default_value=config_path,
+                                              description='Config file path')
+
     # Define nodes with parameters
     feature_tracker_node = Node(
         package='feature_tracker',
@@ -22,8 +30,9 @@ def generate_launch_description():
         namespace='feature_tracker',
         output='log',
         parameters=[{
-            'config_file': config_path,
-            'vins_folder': vins_path
+            'config_file': LaunchConfiguration('config_file'),
+            'vins_folder': vins_path,
+            'use_sim_time': True
         }]
     )
 
@@ -34,8 +43,9 @@ def generate_launch_description():
         namespace='vins_estimator',
         output='screen',
         parameters=[{
-            'config_file': config_path,
-            'vins_folder': vins_path
+            'config_file': LaunchConfiguration('config_file'),
+            'vins_folder': vins_path,
+            'use_sim_time': True
         }]
     )
 
@@ -46,16 +56,18 @@ def generate_launch_description():
         namespace='pose_graph',
         output='screen',
         parameters=[{
-            'config_file': config_path,
+            'config_file': LaunchConfiguration('config_file'),
             'vins_folder': vins_path,
             'visualization_shift_x': 0,
             'visualization_shift_y': 0,
             'skip_cnt': 0,
-            'skip_dis': 0.0
+            'skip_dis': 0.0,
+            'use_sim_time': True
         }]
     )
 
     return LaunchDescription([
+        config_file_param,
         feature_tracker_node,
         vins_estimator_node,
         pose_graph_node

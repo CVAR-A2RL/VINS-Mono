@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="2125264386">
+  <FileInfo check="CheckUnusedFunctions">
+    <functioncall functionName="Node"/>
+    <functioncall functionName="Path"/>
+    <functioncall functionName="PointStamped"/>
+    <functioncall functionName="PoseStamped"/>
+    <functioncall functionName="true"/>
+  </FileInfo>
+</analyzerinfo>

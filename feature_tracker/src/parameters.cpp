@@ -18,6 +18,9 @@ int FOCAL_LENGTH;
 int FISHEYE;
 bool PUB_THIS_FRAME;
 
+int IMAGE_COMPRESSED;
+int SHOW_UNDISTORTION;
+
 template<typename T>
 // T readParam(ros::NodeHandle &n, std::string name)
 // Same but in ros2
@@ -64,6 +67,8 @@ void readParameters(const rclcpp::Node::SharedPtr & n)
   SHOW_TRACK = fsSettings["show_track"];
   EQUALIZE = fsSettings["equalize"];
   FISHEYE = fsSettings["fisheye"];
+  IMAGE_COMPRESSED = fsSettings["image_compressed"];
+  SHOW_UNDISTORTION = fsSettings["show_undistortion"];
   if (FISHEYE == 1) {
     FISHEYE_MASK = VINS_FOLDER_PATH + "config/fisheye_mask.jpg";
   }

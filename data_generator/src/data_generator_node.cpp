@@ -108,7 +108,7 @@ int main(int argc, char ** argv)
   // pub_cloud.publish(point_cloud);
   // Same but in ros2
   sensor_msgs::msg::PointCloud point_cloud;
-  point_cloud.header.frame_id = "world";
+  point_cloud.header.frame_id = "earth";
   point_cloud.header.stamp = n->now();
   for (auto & it : generator.getCloud()) {
     geometry_msgs::msg::Point32 p;
@@ -159,7 +159,7 @@ int main(int argc, char ** argv)
     point_cloud.points.push_back(p);
 
     line_ap[i].id = i;
-    line_ap[i].header.frame_id = "world";
+    line_ap[i].header.frame_id = "earth";
     line_ap[i].ns = "line";
     line_ap[i].action = visualization_msgs::msg::Marker::ADD;
     line_ap[i].pose.orientation.w = 1.0;
@@ -183,7 +183,7 @@ int main(int argc, char ** argv)
   // path.header.frame_id = "world";
   // Same but in ros2
   nav_msgs::msg::Path path;
-  path.header.frame_id = "world";
+  path.header.frame_id = "earth";
 
   // while (ros::ok()) {
   // Same but in ros2
@@ -218,7 +218,7 @@ int main(int argc, char ** argv)
     // pub_odometry.publish(odometry);
     // Same but in ros2
     nav_msgs::msg::Odometry odometry;
-    odometry.header.frame_id = "world";
+    odometry.header.frame_id = "earth";
     odometry.header.stamp = rclcpp::Time(current_time);
     odometry.pose.pose.position.x = position(0);
     odometry.pose.pose.position.y = position(1);
@@ -241,7 +241,7 @@ int main(int argc, char ** argv)
     // pub_pose.publish(pose_stamped);
     // Same but in ros2
     geometry_msgs::msg::PoseStamped pose_stamped;
-    pose_stamped.header.frame_id = "world";
+    pose_stamped.header.frame_id = "earth";
     pose_stamped.header.stamp = rclcpp::Time(current_time);
     pose_stamped.pose = odometry.pose.pose;
     path.poses.push_back(pose_stamped);
@@ -279,7 +279,7 @@ int main(int argc, char ** argv)
     // imu.orientation.w = q.w();
     // Same but in ros2
     sensor_msgs::msg::Imu imu;
-    imu.header.frame_id = "world";
+    imu.header.frame_id = "earth";
     imu.header.stamp = rclcpp::Time(current_time);
     imu.linear_acceleration.x = linear_acceleration(0);
     imu.linear_acceleration.y = linear_acceleration(1);
@@ -365,7 +365,7 @@ int main(int argc, char ** argv)
         }
       }
       feature.header.stamp = rclcpp::Time(current_time);
-      feature.header.frame_id = "world";
+      feature.header.frame_id = "earth";
 
       cv::Mat simu_img[DataGenerator::NUMBER_OF_CAMERA];
       for (int i = 0; i < DataGenerator::NUMBER_OF_CAMERA; i++) {

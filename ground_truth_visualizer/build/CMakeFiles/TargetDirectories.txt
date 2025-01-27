@@ -1,0 +1,10 @@
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/uninstall.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/ground_truth_visualizer_uninstall.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/ground_truth_visualizer_node.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/test.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/edit_cache.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/rebuild_cache.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/list_install_components.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/install.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/install/local.dir
+/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/build/CMakeFiles/install/strip.dir

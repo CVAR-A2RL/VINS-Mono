@@ -293,7 +293,7 @@ void FeatureTracker::showUndistortion(const string & name)
     }
   }
   cv::imshow(name, undistortedImg);
-  cv::waitKey(0);
+  cv::waitKey(1);
 }
 
 void FeatureTracker::undistortedPoints()

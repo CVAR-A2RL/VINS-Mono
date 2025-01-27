@@ -195,7 +195,7 @@ void imu_callback(const sensor_msgs::msg::Imu::SharedPtr imu_msg)
     // std_msgs::Header header = imu_msg->header;
     // Same but in ros2
     std_msgs::msg::Header header = imu_msg->header;
-    header.frame_id = "world";
+    header.frame_id = "earth";
     if (estimator.solver_flag == Estimator::SolverFlag::NON_LINEAR) {
       pubLatestOdometry(tmp_P, tmp_Q, tmp_V, header);
     }
@@ -375,7 +375,7 @@ void process()
       // std_msgs::Header header = img_msg->header;
       // Same but in ros2
       std_msgs::msg::Header header = img_msg->header;
-      header.frame_id = "world";
+      header.frame_id = "earth";
 
       pubOdometry(estimator, header);
       pubKeyPoses(estimator, header);
@@ -427,15 +427,17 @@ int main(int argc, char ** argv)
   // ros::Subscriber sub_restart = n.subscribe("/feature_tracker/restart", 2000, restart_callback);
   // ros::Subscriber sub_relo_points = n.subscribe("/pose_graph/match_points", 2000, relocalization_callback);
   // Same but in ros2
-  auto sub_imu = n->create_subscription<sensor_msgs::msg::Imu>(IMU_TOPIC, 2000, imu_callback);
+  rclcpp::QoS qos(1);
+  qos.reliability(rclcpp::ReliabilityPolicy::BestEffort);
+  auto sub_imu = n->create_subscription<sensor_msgs::msg::Imu>(IMU_TOPIC, qos, imu_callback);
   auto sub_image = n->create_subscription<sensor_msgs::msg::PointCloud>(
     "/feature_tracker/feature",
-    2000, feature_callback);
+    qos, feature_callback);
   auto sub_restart = n->create_subscription<std_msgs::msg::Bool>(
-    "/feature_tracker/restart", 2000,
+    "/feature_tracker/restart", qos,
     restart_callback);
   auto sub_relo_points = n->create_subscription<sensor_msgs::msg::PointCloud>(
-    "/pose_graph/match_points", 2000, relocalization_callback);
+    "/pose_graph/match_points", qos, relocalization_callback);
 
   std::thread measurement_process{process};
   // ros::spin();

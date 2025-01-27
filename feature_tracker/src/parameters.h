@@ -26,6 +26,9 @@ extern int EQUALIZE;
 extern int FISHEYE;
 extern bool PUB_THIS_FRAME;
 
+extern int IMAGE_COMPRESSED;
+extern int SHOW_UNDISTORTION;
+
 // void readParameters(ros::NodeHandle & n);
 // Same but in ros2
 void readParameters(const rclcpp::Node::SharedPtr & n);

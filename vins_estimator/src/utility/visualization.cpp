@@ -102,7 +102,7 @@ void pubLatestOdometry(
   // Same but in ros2
   auto odometry = nav_msgs::msg::Odometry();
   odometry.header = header;
-  odometry.header.frame_id = "world";
+  odometry.header.frame_id = "earth";
   odometry.pose.pose.position.x = P.x();
   odometry.pose.pose.position.y = P.y();
   odometry.pose.pose.position.z = P.z();
@@ -190,8 +190,8 @@ void pubOdometry(const Estimator & estimator, const std_msgs::msg::Header & head
     // Same but in ros2
     nav_msgs::msg::Odometry odometry;
     odometry.header = header;
-    odometry.header.frame_id = "world";
-    odometry.child_frame_id = "world";
+    odometry.header.frame_id = "earth";
+    odometry.child_frame_id = "earth";
     Quaterniond tmp_Q;
     tmp_Q = Quaterniond(estimator.Rs[WINDOW_SIZE]);
     odometry.pose.pose.position.x = estimator.Ps[WINDOW_SIZE].x();
@@ -212,10 +212,10 @@ void pubOdometry(const Estimator & estimator, const std_msgs::msg::Header & head
     // Same but in ros2
     geometry_msgs::msg::PoseStamped pose_stamped;
     pose_stamped.header = header;
-    pose_stamped.header.frame_id = "world";
+    pose_stamped.header.frame_id = "earth";
     pose_stamped.pose = odometry.pose.pose;
     path.header = header;
-    path.header.frame_id = "world";
+    path.header.frame_id = "earth";
     path.poses.push_back(pose_stamped);
     // pub_path.publish(path);
     // Same but in ros2
@@ -236,7 +236,7 @@ void pubOdometry(const Estimator & estimator, const std_msgs::msg::Header & head
 
     pose_stamped.pose = odometry.pose.pose;
     relo_path.header = header;
-    relo_path.header.frame_id = "world";
+    relo_path.header.frame_id = "earth";
     relo_path.poses.push_back(pose_stamped);
     // pub_relo_path.publish(relo_path);
     // Same but in ros2
@@ -275,7 +275,7 @@ void pubKeyPoses(const Estimator & estimator, const std_msgs::msg::Header & head
   // Same but in ros2
   visualization_msgs::msg::Marker key_poses;
   key_poses.header = header;
-  key_poses.header.frame_id = "world";
+  key_poses.header.frame_id = "earth";
   key_poses.ns = "key_poses";
   // key_poses.type = visualization_msgs::Marker::SPHERE_LIST;
   // key_poses.action = visualization_msgs::Marker::ADD;
@@ -326,7 +326,7 @@ void pubCameraPose(const Estimator & estimator, const std_msgs::msg::Header & he
     // Same but in ros2
     nav_msgs::msg::Odometry odometry;
     odometry.header = header;
-    odometry.header.frame_id = "world";
+    odometry.header.frame_id = "earth";
     odometry.pose.pose.position.x = P.x();
     odometry.pose.pose.position.y = P.y();
     odometry.pose.pose.position.z = P.z();
@@ -458,7 +458,7 @@ void pubTF(const Estimator & estimator, const std_msgs::msg::Header & header)
   // br.sendTransform(tf::StampedTransform(transform, header.stamp, "world", "body"));
   // Same but in ros2
   transform.header.stamp = header.stamp;
-  transform.header.frame_id = "world";
+  transform.header.frame_id = "earth";
   transform.child_frame_id = "body";
   transform.transform.translation.x = correct_t(0);
   transform.transform.translation.y = correct_t(1);
@@ -509,7 +509,7 @@ void pubTF(const Estimator & estimator, const std_msgs::msg::Header & header)
   // Same but in ros2
   auto odometry = nav_msgs::msg::Odometry();
   odometry.header = header;
-  odometry.header.frame_id = "world";
+  odometry.header.frame_id = "earth";
   odometry.pose.pose.position.x = estimator.tic[0].x();
   odometry.pose.pose.position.y = estimator.tic[0].y();
   odometry.pose.pose.position.z = estimator.tic[0].z();
@@ -546,7 +546,7 @@ void pubKeyframe(const Estimator & estimator)
     // Same but in ros2
     auto odometry = nav_msgs::msg::Odometry();
     odometry.header = estimator.Headers[WINDOW_SIZE - 2];
-    odometry.header.frame_id = "world";
+    odometry.header.frame_id = "earth";
     odometry.pose.pose.position.x = P.x();
     odometry.pose.pose.position.y = P.y();
     odometry.pose.pose.position.z = P.z();
@@ -619,7 +619,7 @@ void pubRelocalization(const Estimator & estimator)
   // Same but in ros2
   auto odometry = nav_msgs::msg::Odometry();
   odometry.header.stamp = rclcpp::Time(estimator.relo_frame_stamp);
-  odometry.header.frame_id = "world";
+  odometry.header.frame_id = "earth";
   odometry.pose.pose.position.x = estimator.relo_relative_t.x();
   odometry.pose.pose.position.y = estimator.relo_relative_t.y();
   odometry.pose.pose.position.z = estimator.relo_relative_t.z();

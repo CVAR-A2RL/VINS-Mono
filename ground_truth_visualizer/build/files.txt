@@ -1,0 +1,1 @@
+ground_truth_visualizer.a1::/root/aerostack2_ws/src/VINS-Mono/ground_truth_visualizer/src/ground_truth_visualizer.cpp

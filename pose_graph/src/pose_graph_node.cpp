@@ -317,7 +317,7 @@ void vio_callback(const nav_msgs::msg::Odometry::SharedPtr pose_msg)
   // Same but in ros2
   visualization_msgs::msg::Marker key_odometrys;
   key_odometrys.header = pose_msg->header;
-  key_odometrys.header.frame_id = "world";
+  key_odometrys.header.frame_id = "earth";
   key_odometrys.ns = "key_odometrys";
   key_odometrys.type = visualization_msgs::msg::Marker::SPHERE_LIST;
   key_odometrys.action = visualization_msgs::msg::Marker::ADD;
@@ -371,12 +371,12 @@ void vio_callback(const nav_msgs::msg::Odometry::SharedPtr pose_msg)
     // Same but in ros2
     geometry_msgs::msg::PoseStamped pose_stamped;
     pose_stamped.header = pose_msg->header;
-    pose_stamped.header.frame_id = "world";
+    pose_stamped.header.frame_id = "earth";
     pose_stamped.pose.position.x = vio_t.x();
     pose_stamped.pose.position.y = vio_t.y();
     pose_stamped.pose.position.z = vio_t.z();
     no_loop_path.header = pose_msg->header;
-    no_loop_path.header.frame_id = "world";
+    no_loop_path.header.frame_id = "earth";
     no_loop_path.poses.push_back(pose_stamped);
     pub_vio_path->publish(no_loop_path);
   }

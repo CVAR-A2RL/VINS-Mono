@@ -1,20 +1,43 @@
 /**:
   ros__parameters:
-    sub_ground_truth_pose_topic: ""
-    sub_ground_truth_point_topic: "/leica/position"
+    sub_ground_truth_pose_topic: "/drone0/self_localization/pose"
+    # sub_ground_truth_pose_topic: ""
+    # sub_ground_truth_point_topic: "/leica/position"
+    sub_ground_truth_point_topic: ""
     pub__ground_truth_pose_topic: "/ground_truth/pose"
     pub_ground_truth_path_topic: "/ground_truth/path"
-    frame_id: "world"
+    frame_id: "earth"
     starting_pose:
       position:
-        x: 4.688319
-        y: -1.786938
+        # x: 4.688319
+        # y: -1.786938
         # z: 0.783338
-        z: 0.918338
+        # # z: 0.918338
+        # x: 0.00492396
+        # y: -1.4748383
+        # z: 0.0680055
+        # x: 0.00460603
+        # y: 0.00138748
+        # z: 0.05496428
+        x: 0.12170665711164474
+        y: -0.7137910723686218
+        z: 0.08312448114156723
       orientation:
         # w: 0.203
-        w: 0.242
-        x: 0.0
-        y: 0.0
+        # # w: 0.242
+        # x: 0.0
+        # y: 0.0
         # z: 0.979
-        z: 0.970
+        # z: 0.970
+        # w: 0.9996139
+        # x: -0.0035714
+        # y: -0.0235941
+        # z: 0.0142355
+        # w: 0.9999795
+        # x: -0.0000125
+        # y: -0.0031201
+        # z: -0.0055951
+        x: -0.013294198061611247
+        y: -0.015319326900338746
+        z: -0.7367974316556293
+        w: -0.675809085939359

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="4247356272">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="main" lineNumber="40"/>
+    <functioncall functionName="GroundTruthVisualizer"/>
+    <functioncall functionName="argc"/>
+    <functioncall functionName="argv"/>
+    <functioncall functionName="init"/>
+    <functioncall functionName="make_shared"/>
+    <functioncall functionName="node"/>
+    <functioncall functionName="shutdown"/>
+    <functioncall functionName="spin"/>
+  </FileInfo>
+</analyzerinfo>

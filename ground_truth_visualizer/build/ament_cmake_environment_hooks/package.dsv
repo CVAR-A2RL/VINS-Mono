@@ -1,0 +1,4 @@
+source;share/ground_truth_visualizer/local_setup.bash
+source;share/ground_truth_visualizer/local_setup.dsv
+source;share/ground_truth_visualizer/local_setup.sh
+source;share/ground_truth_visualizer/local_setup.zsh

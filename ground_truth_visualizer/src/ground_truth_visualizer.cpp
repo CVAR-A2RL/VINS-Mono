@@ -99,6 +99,9 @@ GroundTruthVisualizer::GroundTruthVisualizer(
     this->get_logger(), "pub_ground_truth_path_topic: %s", pub_ground_truth_path_topic_.c_str());
   RCLCPP_INFO(this->get_logger(), "frame_id: %s", frame_id_.c_str());
 
+  rclcpp::QoS qos(10);
+  qos.reliability(rclcpp::ReliabilityPolicy::BestEffort);
+
   // Initialize publishers
   ground_truth_pub_ = this->create_publisher<nav_msgs::msg::Path>(
     pub_ground_truth_path_topic_,
@@ -112,13 +115,13 @@ GroundTruthVisualizer::GroundTruthVisualizer(
   if (!sub_ground_truth_pose_topic_.empty()) {
     ground_truth_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
       sub_ground_truth_pose_topic_,
-      rclcpp::QoS(10),
+      qos,
       std::bind(&GroundTruthVisualizer::groundTruthPoseCallback, this, std::placeholders::_1));
   }
   if (!sub_ground_truth_point_topic_.empty()) {
     ground_truth_point_sub_ = this->create_subscription<geometry_msgs::msg::PointStamped>(
       sub_ground_truth_point_topic_,
-      rclcpp::QoS(10),
+      qos,
       std::bind(&GroundTruthVisualizer::groundTruthPointCallback, this, std::placeholders::_1));
   }
 
