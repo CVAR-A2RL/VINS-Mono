@@ -573,9 +573,9 @@ int main(int argc, char ** argv)
   RCLCPP_INFO(
     n->get_logger(), "Subscribing to image topics. Image compressed: %d",
     IMAGE_COMPRESSED);
-  auto sub_img = n->create_subscription<sensor_msgs::msg::Image>(IMAGE_TOPIC, qos, img_callback);
+  auto sub_img = n->create_subscription<sensor_msgs::msg::Image>(IMAGE_TOPIC, 100, img_callback);
   auto sub_img_compressed = n->create_subscription<sensor_msgs::msg::CompressedImage>(
-    IMAGE_TOPIC + "/compressed", qos,
+    IMAGE_TOPIC + "/compressed", 100,
     img_callback_compressed);
   // pub_img = n.advertise<sensor_msgs::PointCloud>("feature", 1000);
   // pub_match = n.advertise<sensor_msgs::Image>("feature_img",1000);
