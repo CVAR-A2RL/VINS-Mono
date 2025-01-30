@@ -1,0 +1,15 @@
+name: as2_semantic_slam
+root: ./
+startup_window: slam
+pre_window: |
+  export NAMESPACE=drone0;
+windows:
+  - slam:
+      layout: tiled
+      panes:
+        - ros2 bag play ../rosbags/imu_cam_bag_piloted --start-offset 10 --clock 1000
+        - ros2 launch vins_estimator euroc.py config_file:="../config/euroc/tii_no_config.yaml"
+  - rosbag:
+      layout: tiled
+      panes:
+        - rviz2 -d ./rviz_config/vins_tii.rviz

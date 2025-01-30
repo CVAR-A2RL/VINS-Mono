@@ -1,0 +1,18 @@
+name: as2_semantic_slam
+root: ./
+startup_window: slam
+pre_window: |
+  export NAMESPACE=drone0;
+windows:
+  - slam:
+      layout: tiled
+      panes:
+        - ros2 bag play ../rosbags/MH_01_easy -r 1.0 --clock 1000 --start-offset 30
+        - ros2 launch vins_estimator euroc.py config_file:="../config/euroc/euroc_config_default.yaml"
+        # - ros2 launch vins_estimator euroc.py config_file:="/root/workspace/src/VINS-Mono/config/euroc/euroc_config_default.yaml"
+        # - ros2 launch vins_estimator euroc.py config_file:="euroc_config.yaml"
+        # - ros2 launch vins_estimator euroc.py config_file:="euroc_config_no_extrinsic.yaml"
+  - rosbag:
+      layout: tiled
+      panes:
+        - rviz2 -d ./rviz_config/vins_default.rviz

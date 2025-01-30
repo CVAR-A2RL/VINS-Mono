@@ -1,0 +1,9 @@
+input_topic: "/drone0/sensor_measurements/camera/image"
+output_topic: "/drone0/sensor_measurements/new_camera/image/compressed"
+compressed: 0
+camera_matrix:
+  fx: 289.88467639
+  fy: 387.06227499
+  cx: 316.58338772
+  cy: 241.86918975
+distortion_coefficients: [-0.28145280823630314, 0.1091225266070853, 0.00018240521552769957, 6.785645205189456e-05, -0.023250148744302514]

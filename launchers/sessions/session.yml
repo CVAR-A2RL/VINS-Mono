@@ -1,0 +1,16 @@
+name: as2_semantic_slam
+root: ./
+startup_window: slam
+pre_window: |
+  export NAMESPACE=drone0;
+windows:
+  - slam:
+      layout: tiled
+      panes:
+        - ros2 bag play ../rosbags/no_flicker_2025_01_29 --clock 1000
+        - ros2 launch vins_estimator euroc.py config_file:="../config/euroc/euroc_config.yaml"
+  - rosbag:
+      layout: tiled
+      panes:
+        - rviz2 -d ./rviz_config/vins.rviz
+        - python3 ../scripts_python/image_undistort.py "camera_config/as2.yml"

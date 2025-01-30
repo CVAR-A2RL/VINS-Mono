@@ -1,0 +1,12 @@
+# Camera distortion parameters (D)
+distortion_parameters:
+  k1:  1.79879575
+  k2: -0.13634550
+  p1:  0.00049569
+  p2: -0.00017115
+# Camera intrinsic parameters (K)
+projection_parameters:
+  fx: 579.95631454
+  fy: 579.95631454
+  cx: 623.11083557
+  cy: 352.59850193

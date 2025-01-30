@@ -13,10 +13,10 @@ output_path: "/root/output/"
 # Model camera type
 model_type: PINHOLE
 camera_name: camera
-image_width: 1280
-image_height: 720
-image_compressed: 1
-show_undistortion: 0
+image_width: 640
+image_height: 480
+image_compressed: 0
+show_undistortion: 1
 # Camera distortion parameters (D)
 distortion_parameters:
   k1: 0.0
@@ -24,11 +24,16 @@ distortion_parameters:
   p1: 0.0
   p2: 0.0
 # Camera intrinsic parameters (K)
+# projection_parameters:
+#   fx: 229.01913063
+#   fy: 225.95864628
+#   cx: 301.86905197
+#   cy: 248.67912084
 projection_parameters:
-  fx: 306.15245378
-  fy: 299.02255470
-  cx: 603.62660136
-  cy: 351.34932236
+  fx: 289.88467639
+  fy: 387.06227499
+  cx: 316.58338772
+  cy: 241.86918975
 
 # Extrinsic parameter between IMU and Camera.
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
@@ -40,12 +45,18 @@ extrinsicRotation: !!opencv-matrix
    rows: 3
    cols: 3
    dt: d
-   data: [ 0.0,  0.0,  1.0,
-          -1.0,  0.0,  0.0,
-           0.0, -1.0,  0.0]
+   # data: [ 0.0,  0.0,  1.0,
+   #        -1.0,  0.0,  0.0,
+   #         0.0, -1.0,  0.0]
+   # data: [ 0.0,  0.4985956,  0.8668347,
+   #        -1.0,  0.0      ,  0.0      ,
+   #         0.0, -0.8668347,  0.4985956]
    # data: [ 0.0, -0.5000000,  0.8660254,
    #        -1.0,  0.0000000,  0.0,
    #         0.0, -0.8660254, -0.5000000]
+   data: [ 0.0,  0.8660254,  0.5000000,
+          -1.0,  0.0      ,  0.0      ,
+           0.0, -0.5000000,  0.8660254]
    #data: [ 0.0, -1.0,  0.0,
    #        1.0,  0.0,  0.0,
    #        0.0,  0.0,  1.0]
@@ -58,7 +69,8 @@ extrinsicTranslation: !!opencv-matrix
    rows: 3
    cols: 1
    dt: d
-   data: [0.11, 0.0, 0.025]
+   # data: [0.11, 0.0, 0.025]
+   data: [0.091422, 0.024722, 0.055073]
    #data: [0.025, 0.0, 0.11]
 
 # Feature tracker paprameters
@@ -76,12 +88,12 @@ max_num_iterations: 8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
 # Imu parameters    # The more accurate parameters you provide, the better performance
-acc_n: 0.0004         # accelerometer measurement noise standard deviation. #0.2   0.04
-#acc_n: 0.08
-gyr_n: 0.00008        # gyroscope measurement noise standard deviation.     #0.05  0.004
-#gyr_n: 0.004
-acc_w: 0.00004      # accelerometer bias random walk noise standard deviation.  #0.02
-#acc_w: 0.00004
+# acc_n: 0.0004         # accelerometer measurement noise standard deviation. #0.2   0.04
+acc_n: 0.08
+# gyr_n: 0.00008        # gyroscope measurement noise standard deviation.     #0.05  0.004
+gyr_n: 0.004
+# acc_w: 0.00004      # accelerometer bias random walk noise standard deviation.  #0.02
+acc_w: 0.00004
 gyr_w: 2.0e-6       # gyroscope bias random walk noise standard deviation.     #4.0e-5
 g_norm: 9.81007     # gravity magnitude
 
